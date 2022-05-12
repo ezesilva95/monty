@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 	char *token, *str = NULL;
 	size_t size = 0;
 	stack_t *stack = NULL;
-	
+
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	file_d = fopen(argv[1], "r");
 	if (file_d == NULL)
 	{
-		fprintf(stderr,"Error: Can't open file %s\n", argv[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	while (1)
@@ -30,9 +30,11 @@ int main(int argc, char *argv[])
 			break;
 		line_n++;
 		token = strtok(str, " \t\n");
+		if (token == NULL || token[0] == '#')
+			continue;
 		if (get_function(token, &stack, line_n) == 1)
 		{
-			fprintf(stderr, "L%i: unkown instruction %s\n", line_n, token);
+			fprintf(stderr, "L%i: unknown instruction %s\n", line_n, token);
 			free_dlistint(stack);
 			free(str);
 			fclose(file_d);
