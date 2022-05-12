@@ -11,24 +11,24 @@ void push(stack_t **stack, unsigned int line_number)
 	char *nmb;
 	int num = 0;
 
-	node = malloc(sizeof(stack_t));
 	nmb = strtok(NULL, " \n\t");
+	node = malloc(sizeof(stack_t));
 	if (node == NULL)
 	{
-		printf("Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		if (*stack != NULL)
 		{
-			free(stack);
+			free_dlistint(*stack);
 		}
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(nmb);
 	if (nmb == NULL || is_number(nmb) == -1)
 	{
-		printf("L%d: usage: push integer\n", line_number);
-		free(*stack);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
+		free_dlistint(*stack);
 		exit(EXIT_FAILURE);
 	}
+	num = atoi(nmb);
 	node->n = num;
 	node->prev = NULL;
 	if (*stack == NULL)

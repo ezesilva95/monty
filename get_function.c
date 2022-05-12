@@ -10,12 +10,13 @@
 int get_function(char *tok, stack_t **stack, unsigned int line_number)
 {
 	instruction_t instruct[] = {
-		{"push", pop},
+		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop", pop},
 		{"add", add},
 		{"nop", nop},
+		{NULL, NULL},
 
 	};
 	int i = 0, s = 1;
