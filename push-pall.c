@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * push - pushes an element of the stack.
@@ -15,17 +15,17 @@ void push(stack_t **stack, unsigned int line_number)
 	nmb = strtok(NULL, " \n\t");
 	if (node == NULL)
 	{
-		printf(stderr, "Error: malloc failed\n");
+		printf("Error: malloc failed\n");
 		if (*stack != NULL)
 		{
 			free(stack);
 		}
 		exit(EXIT_FAILURE);
 	}
-	num = aoti(nmb);
+	num = atoi(nmb);
 	if (nmb == NULL || is_number(nmb) == -1)
 	{
-		printf(stderr, "L%d: usage: push integer\n", line_number);
+		printf("L%d: usage: push integer\n", line_number);
 		free(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -51,6 +51,7 @@ void push(stack_t **stack, unsigned int line_number)
  */
 void pall(stack_t **stack, unsigned int line_number)
 {
+	(void) line_number;
 	stack_t *node = *stack;
 	if (!stack || !*stack)
 		return;
