@@ -6,10 +6,10 @@
  */
 void pop(stack_t **stack, unsigned int line_number)
 {
-	if (stack == NULL || *stack == NULL)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%u: can't pop an empty stack\n", line_number);
-		free(stack);
+		free_dlistint(stack);
 		exit(EXIT_FAILURE);
 	}
 	else
