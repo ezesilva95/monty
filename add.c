@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
  * _add - adds the top two elements in stack
- * @stack: top node
- * @line_number: node number
+ * @stack: q
+ * @line_number: location of instruction
  */
-void _add(stack_t **stack, unsigned int line_number)
+void add(stack_t **stack, unsigned int line_number)
 {
 	if (*stack != NULL || (*stack)->next != NULL)
 	{
