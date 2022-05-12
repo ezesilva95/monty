@@ -6,6 +6,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <unistd.h>
+#include <stddef.h>
 
 
 /**
@@ -46,5 +47,5 @@ int get_function(char *tok, stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-int main(int argc, char *argv[]);
+void free_dlistint(stack_t *stack);
 #endif
