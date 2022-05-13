@@ -4,19 +4,24 @@
 * @stack: a
 * line_number: lcoation of instruction
 */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL || (*stack)->next == NULL)
+	stack_t *temp2 = *stack, *temp;
+
+	if (*stack != NULL && (*stack)->next == NULL)
+	{
+		temp = (*stack)->next;
+		temp->n /= temp2->n;
+		pop(stack, line_number);
+		*stack = temp;
+	}
+	if (temp2->n)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+	}
+	else
 	{
 		printf("L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if ((*stack)->n == 0 || (*stack)->next->n == 0)
-	{
-		printf("L%u: division by zero\n", line_number);
-	}
-	(*stack)->next->n /= (*stack)->n;
-	(*stack) = (*stack)->next;
-	free((*stack)->prev);
-	(*stack)->prev = NULL;
 }
