@@ -6,12 +6,14 @@
  */
 void add(stack_t **stack, unsigned int line_number)
 {
-	if (*stack != NULL || (*stack)->next != NULL)
+	stack_t *temp;
+
+	if (*stack != NULL && (*stack)->next != NULL)
 	{
-		(*stack)->next->n += (*stack)->n;
-		(*stack) = (*stack)->next;
-		free((*stack)->prev);
-		(*stack)->prev = NULL;
+		temp = (*stack)->next;
+		temp->n += (*stack)->n;
+		pop(stack, line_number);
+		*stack = temp;
 	}
 	else
 	{
