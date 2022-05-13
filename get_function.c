@@ -19,6 +19,7 @@ int get_function(char *tok, stack_t **stack, unsigned int line_number)
 		{"sub", sub},
 		{"mul", mul},
 		{"swap", swap},
+		{"div", div},
 		{NULL, NULL},
 
 	};
