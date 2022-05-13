@@ -26,9 +26,9 @@ int main(int argc, char *argv[])
 	}
 	while (1)
 	{
+		line_n++;
 		if (getline(&str, &size, file_d) == -1)
 			break;
-		line_n++;
 		token = strtok(str, " \t\n");
 		if (token == NULL || token[0] == '#')
 			continue;
